@@ -22,6 +22,6 @@ export const priceCommand = async (ctx: Context) => {
       ctx.replyWithMarkdownV2('❌ *Token not found*\.');
     }
   } catch (error) {
-    ctx.replyWithMarkdownV2('❌ *Failed to fetch price\. Try again later*\.');
+    ctx.replyWithMarkdownV2('❌ *Failed to fetch price\\. Try again later*\.');
   }
 };

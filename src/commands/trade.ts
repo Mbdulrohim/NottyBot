@@ -1,5 +1,6 @@
 import { Context } from 'telegraf';
 import { Message } from 'telegraf/typings/core/types/typegram';
+import { escapeMarkdown } from '../utils/escapeMarkdown';
 
 export const tradeCommand = (ctx: Context) => {
   const args = (ctx.message as Message.TextMessage).text.split(' ') || [];
@@ -19,11 +20,11 @@ export const tradeCommand = (ctx: Context) => {
   const pnl = (Math.random() - 0.5) * 20;
   const result = amount + (amount * pnl / 100);
 
-  ctx.replyWithMarkdownV2(`
+  ctx.replyWithMarkdownV2(escapeMarkdown(`
 ✅ *Trade executed\!*
 📈 *Token:* ${token}
 💰 *Amount:* ${amount}
 📊 *PnL:* ${pnl.toFixed(2)}%
 💸 *Result:* ${result.toFixed(2)}
-  `);
+  `));
 };
