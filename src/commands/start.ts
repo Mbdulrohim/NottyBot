@@ -18,21 +18,19 @@ export const startCommand = async (ctx: Context) => {
     //   username: user.username || 'New User',
     //   walletBalance: user.wallets.length > 0 ? user.wallets[0].balance : '0',
     // });
-          const image = await generatePnLImage(
-            {
-              pair: "ETH/SOL",
-              entry: "56K @0.0032",
-              exit: "58K @0.0035",
-              duration: "02d 04h 30m",
-              percentChange: "+65.4%",
-              refQr: "https://api.qrserver.com/v1/create-qr-code/?data=6365646358",
-              refNo: "6xR44435",
-              username: "@DOVEYYLTT",
-              userImage: "https://api.qrserver.com/v1/create-qr-code/?data=6365646358",
-              profit: true
-            }
-          )
-    
+    const image = await generatePnLImage({
+      pair: 'ETH/SOL',
+      entry: '56K @0.0032',
+      exit: '58K @0.0035',
+      duration: '02d 04h 30m',
+      percentChange: '+65.4%',
+      refQr: 'https://api.qrserver.com/v1/create-qr-code/?data=6365646358',
+      refNo: '6xR44435',
+      username: '@DOVEYYLTT',
+      userImage: 'https://api.qrserver.com/v1/create-qr-code/?data=6365646358',
+      profit: true,
+    });
+
     const imageBuffer = await generateWalletImage({
       username: 'JohnDoe',
       walletAddress: 'EQABC...xyz',
