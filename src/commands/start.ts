@@ -3,30 +3,29 @@ import { generateStartImage } from '../services/welcome-image';
 import { escapeMarkdown } from '../utils/escapeMarkdown';
 import { createMainMenuKeyboard } from '../middleware/keyboard';
 import { mockData } from '../utils/mockData';
-import { generateWalletImage } from '../services/generateWalletImage';
-import { generatePnLImage } from '../services/pnl-generate';
+import { generateWalletImage } from '../utils';
 
 export const startCommand = async (ctx: Context) => {
   try {
     // Get actual user data from session/database, fallback to mock data
-    const user = await getUserFromSession(ctx.from?.id.toString() || '') || mockData.user;
+    const user =
+      (await getUserFromSession(ctx.from?.id.toString() || '')) ||
+      mockData.user;
 
     // Generate dynamic image with user data
-    const imageBuffer = await generateStartImage({
-      username: user.username || 'New User',
-      walletBalance: user.wallets.length > 0 ? user.wallets[0].balance : '0',
+    // const imageBuffer = await generateStartImage({
+    //   username: user.username || 'New User',
+    //   walletBalance: user.wallets.length > 0 ? user.wallets[0].balance : '0',
+    // });
+    const imageBuffer = await generateWalletImage({
+      username: 'JohnDoe',
+      walletAddress: 'EQABC...xyz',
+      walletBalance: '24.50',
+      walletCount: 3,
+      isDefault: true,
     });
-    // const imageBuffer = await generatePnLImage({
-    //   pair: 'PIL/USDC',
-    //   entry: '56K@0.0032',
-    //   exit: '59K@0.0087',
-    //   duration: '00d 01h12m',
-    //   refNo: '6XR444435',
-    //   username: 'DOYVELTT',
-    //   percentChange: '+65.3%'
-    // })
     const welcomeMessage = buildWelcomeMessage(user);
-    
+
     await ctx.replyWithPhoto(
       { source: imageBuffer },
       {
@@ -38,7 +37,6 @@ export const startCommand = async (ctx: Context) => {
 
     // Initialize user session properly
     initializeUserSession(ctx);
-    console.dir(ctx, { depth: null });
   } catch (error) {
     console.error('Start command error:', error);
     await ctx.reply('🚨 Error initializing bot. Please try again.');
@@ -80,7 +78,7 @@ function initializeUserSession(ctx: any) {
 // Enhanced action handlers
 export const registerStartActions = (bot: any) => {
   bot.action('wallet_action', async (ctx: Context) => {
-    await ctx.reply('Wallet section coming soon!'); 
+    await ctx.reply('Wallet section coming soon!');
   });
 
   bot.action('trade_action', async (ctx: Context) => {
@@ -90,7 +88,7 @@ export const registerStartActions = (bot: any) => {
     );
   });
 
-  bot.action('help_action', (ctx: Context) => 
+  bot.action('help_action', (ctx: Context) =>
     ctx.reply('Help content...', Markup.removeKeyboard())
   );
 };

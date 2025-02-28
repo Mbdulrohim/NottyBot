@@ -11,3 +11,13 @@ export const axiosTonInstance = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+const TELEGRAM_API_URL =
+  process.env.TELEGRAM_API_URL + '/bot' + process.env.BOT_TOKEN;
+
+export const axiosTelegramInstance = axios.create({
+  baseURL: TELEGRAM_API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});

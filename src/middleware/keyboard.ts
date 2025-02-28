@@ -1,6 +1,6 @@
 // src/middleware/keyboard.ts
-import { Markup } from "telegraf";
-import { User, Wallet } from "../types/User";
+import { Markup } from 'telegraf';
+import { User, Wallet } from '../types/User';
 
 export function createWalletKeyboard(user: User) {
   if (!user.wallets) {
@@ -8,24 +8,26 @@ export function createWalletKeyboard(user: User) {
   }
 
   const keyboard = [];
-  
+
   user.wallets.forEach((wallet, index) => {
     keyboard.push([
       Markup.button.callback(
-        `${getProviderEmoji(wallet.provider)} Wallet ${index + 1} ${wallet.isDefault ? '⭐' : ''}`,
+        `${getProviderEmoji(wallet.provider)} Wallet ${index + 1} ${
+          wallet.isDefault ? '⭐' : ''
+        }`,
         `wallet_${index}`
-      )
+      ),
     ]);
   });
 
   keyboard.push([
     Markup.button.callback('➕ Add Wallet', 'add_wallet'),
-    Markup.button.callback('💸 Transfer', 'transfer_funds')
+    Markup.button.callback('💸 Transfer', 'transfer_funds'),
   ]);
 
   keyboard.push([
     Markup.button.callback('⭐ Set Default', 'set_default'),
-    Markup.button.callback('🔄 Refresh', 'refresh_wallets')
+    Markup.button.callback('🔄 Refresh', 'refresh_wallets'),
   ]);
 
   keyboard.push([Markup.button.callback('🔙 Back', 'back_to_main')]);
@@ -33,13 +35,12 @@ export function createWalletKeyboard(user: User) {
   return Markup.inlineKeyboard(keyboard);
 }
 
-
-function getProviderEmoji(provider: Wallet["provider"]): string {
+function getProviderEmoji(provider: Wallet['provider']): string {
   return {
-    tonkeeper: "🔷",
-    tonhub: "🔶",
-    mytonwallet: "🟡",
-    manual: "⚙️",
+    tonkeeper: '🔷',
+    tonhub: '🔶',
+    mytonwallet: '🟡',
+    manual: '⚙️',
   }[provider];
 }
 
@@ -47,34 +48,34 @@ function getProviderEmoji(provider: Wallet["provider"]): string {
 export function createWalletDetailKeyboard(wallet: Wallet) {
   return Markup.inlineKeyboard([
     [
-      Markup.button.callback("📤 Send", `send_${wallet.address}`),
-      Markup.button.callback("📥 Receive", `receive_${wallet.address}`),
+      Markup.button.callback('📤 Send', `send_${wallet.address}`),
+      Markup.button.callback('📥 Receive', `receive_${wallet.address}`),
     ],
     [
-      Markup.button.callback("📊 History", `history_${wallet.address}`),
-      Markup.button.callback("🗑️ Disconnect", `disconnect_${wallet.address}`),
+      Markup.button.callback('📊 History', `history_${wallet.address}`),
+      Markup.button.callback('🗑️ Disconnect', `disconnect_${wallet.address}`),
     ],
-    [Markup.button.callback("🔙 Back", "back_to_wallets")],
+    [Markup.button.callback('🔙 Back', 'back_to_wallets')],
   ]);
 }
 // src/middleware/keyboard.ts (additional function)
-export function createMainMenuKeyboard(user: User) {
+export function createMainMenuKeyboard(user?: User) {
   return Markup.inlineKeyboard([
     [
-      Markup.button.callback("💰 Wallet", "wallet_action"),
-      Markup.button.callback("📈 Trade", "trade_action"),
+      Markup.button.callback('💰 Wallet', 'wallet_action'),
+      Markup.button.callback('📈 Trade', 'trade_action'),
     ],
     [
-      Markup.button.callback("🏆 Leaderboard", "leaderboard_action"),
-      Markup.button.callback("⛽ Gas Tracker", "gas_action"),
+      Markup.button.callback('🏆 Leaderboard', 'leaderboard_action'),
+      Markup.button.callback('⛽ Gas Tracker', 'gas_action'),
     ],
     [
-      Markup.button.callback("⚙️ Settings", "settings_action"),
-      Markup.button.callback("🎮 TON Arcade", "arcade_action"),
+      Markup.button.callback('⚙️ Settings', 'settings_action'),
+      Markup.button.callback('🎮 TON Arcade', 'arcade_action'),
     ],
     [
-      Markup.button.url("Official Group", "https://t.me/NottyBot"),
-      Markup.button.url("Documentation", "https://docs.nottybot.com"),
+      Markup.button.url('Official Group', 'https://t.me/NottyBot'),
+      Markup.button.url('Documentation', 'https://docs.nottybot.com'),
     ],
   ]);
 }

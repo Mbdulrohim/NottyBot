@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import { startCommand } from './start';
+import { startCommand } from './startCommand';
 import { balanceCommand } from './balance';
 import { priceCommand } from './price';
 import { tradeCommand } from './trade';
