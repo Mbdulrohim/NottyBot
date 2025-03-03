@@ -8,8 +8,8 @@ import { connectDb } from './config/database';
 const app = express();
 
 // Launch bot
-// bot.launch();
-// console.log('Bot is running...');
+bot.launch();
+console.log('Bot is running...');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

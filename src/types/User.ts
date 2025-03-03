@@ -21,6 +21,7 @@ export interface ReferralInfo {
 }
 
 export interface User {
+  //date joined
   id: string; // Telegram user ID
   username?: string;
   wallets: Wallet[];

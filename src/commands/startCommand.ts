@@ -3,6 +3,7 @@ import { sessionService, userService } from '../services';
 import { escapeMarkdown, generateWalletImage } from '../utils';
 import { User } from '../entity';
 import { createMainMenuKeyboard } from '../middleware/keyboard';
+import { generatePnLImage } from '../services/pnl-image';
 // User
 
 export const startCommand = async (ctx: Context) => {
@@ -36,6 +37,7 @@ export const startCommand = async (ctx: Context) => {
         walletCount: 9,
         isDefault: false,
       });
+      const image = await generatePnLImage('ade')
 
       const welcomeMessage = buildWelcomeMessage({
         username: telegram_user?.username || '',
