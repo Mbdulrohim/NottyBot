@@ -1,16 +1,25 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { User } from './UserEntity';
 
-enum WalletProvider {
+export enum WalletProvider {
   TONKEEPER = 'tonkeeper',
   TONHUB = 'tonhub',
   MYTONWALLET = 'mytonwallet',
   MANUAL = 'manual',
+  TON = 'TON',
+  SOL = 'Solana',
 }
 
 @Entity()
 export class Wallet {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   wallet_id: string;
 
   @ManyToOne(() => User, (user) => user.wallets)
@@ -22,8 +31,18 @@ export class Wallet {
   @Column({ unique: true })
   wallet_address: string;
 
-  @Column('timestamptz')
+  @Column({ type: 'timestamptz', nullable: true })
   connected_at: Date;
+
+  @CreateDateColumn({ type: 'timestamptz' })
+  created_at: Date;
+
+  /** User generated name */
+  @Column()
+  wallet_name: string;
+
+  @UpdateDateColumn({ type: 'timestamptz' })
+  updated_at: Date;
 
   @Column({ type: 'boolean', default: false })
   is_default: boolean;

@@ -1,7 +1,6 @@
 import { Context } from 'telegraf';
-import { sessionService, userService } from '../services';
+import { sessionService, userService, walletService } from '../services';
 import { escapeMarkdown, generateWalletImage } from '../utils';
-import { User } from '../entity';
 import { createMainMenuKeyboard } from '../middleware/keyboard';
 
 export const startCommand = async (ctx: Context) => {
@@ -51,6 +50,14 @@ export const startCommand = async (ctx: Context) => {
         }
       );
     } else if (newUser) {
+      const generatedWallets = await walletService.createFirstWalletPair(
+        newUser
+      );
+      console.log(`
+        ton: ${generatedWallets.ton}
+        sol: ${generatedWallets.sol} 
+      `);
+
       // Remove and generate for new user
       const imageBuffer = await generateWalletImage({
         username: telegram_user?.username || '',
@@ -71,6 +78,7 @@ export const startCommand = async (ctx: Context) => {
           ...createMainMenuKeyboard(),
         }
       );
+
       const newSessionPromise = sessionService.createSession(telegram_id);
 
       await Promise.all([replyPromise, newSessionPromise]);
