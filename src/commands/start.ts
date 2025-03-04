@@ -8,6 +8,8 @@ import { generatePnLImage } from '../services/pnl-image';
 
 export const startCommand = async (ctx: Context) => {
   try {
+    // start command with a link
+// start with contract link
     // Get actual user data from session/database, fallback to mock data
     const user =
       (await getUserFromSession(ctx.from?.id.toString() || '')) ||
