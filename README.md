@@ -59,14 +59,80 @@ Node.js | PostgreSQL | TON SDK | Solana Web3.js | Node Canvas
 
 ---
 
-## 🚧 In Development
+## 🗺️ Development Roadmap
 
-*What's cooking for v2?*
-- [ ] TON Mainnet integration
-- [ ] NFT achievement gallery
-- [ ] Trading mini-games (FOMO, rugpull prediction)
-- [ ] Social copy trading features
-- [ ] AI-powered market summaries
+### ✅ Completed (Hackathon MVP Core)
+- **Visual Storytelling Engine**
+  - [x] Welcome/welcome back image generation
+  - [x] Dynamic PnL charts with node-canvas
+  - [x] Transaction receipt templates
+
+- **Solana Integration**
+  - [x] SOL token metadata fetcher
+  - [x] Swap simulation engine
+  - [x] Auto wallet address generation
+
+- **Core Infrastructure**
+  - [x] PostgreSQL database architecture
+  - [x] Redis caching layer
+  - [x] Basic command handlers
+
+### 🔄 In Progress 
+- **TON Network Expansion**
+  - [⏳] TON mainnet trading simulation
+  - [⏳] TON Connect wallet integration
+  - [⏳] Jetton token support
+
+- **Gamification Suite**
+  - [⏳] Trading mini-game prototype
+  - [⏳] Daily login streak rewards
+  - [⏳] Basic referral wheel mechanics
+
+*Current Focus: Completing cross-chain swap simulations by [DD/MM]*
+
+### 🚀 Next Milestones
+
+- **Cross-Chain Features**
+  - [ ] SOL↔TON bridge simulation
+  - [ ] EVM chains integration (Arbitrum, Base)
+  - [ ] Gas fee prediction system
+
+- **Advanced Trading**
+  - [ ] Limit order simulations
+  - [ ] Technical analysis toolkit
+  - [ ] Paper trading competitions
+
+- **Social Features**
+  - [ ] Clan/group trading battles
+  - [ ] Copy trading leaderboards
+  - [ ] Trade history sharing as NFTs
+
+- **UI/UX Enhancements**
+  - [ ] Animated price charts
+  - [ ] Interactive asset discovery quiz
+  - [ ] Voice-based commands
+
+- **Infrastructure**
+  - [ ] Dockerized deployment
+  - [ ] Load test setup (50k+ users)
+  - [ ] Grafana monitoring dashboard
+
+### 🌌 Stretch Goals (Post-Hackathon)
+
+- **DeFi Integrations**
+  - [ ] Lending protocol simulations
+  - [ ] Yield farming strategies
+  - [ ] NFT collateralization
+
+- **AI Features**
+  - [ ] Trade pattern recognition
+  - [ ] Risk assessment chatbot
+  - [ ] Sentiment analysis feed
+
+- **Community DAO**
+  - [ ] $NOTTY governance token
+  - [ ] Feature voting system
+  - [ ] Bot customization marketplace
 
 ---
 
