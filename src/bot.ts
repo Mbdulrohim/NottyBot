@@ -7,6 +7,7 @@ import { priceCommand } from './commands/price';
 import { tradeCommand } from './commands/trade';
 // import { handleWallet } from './commands/wallet';
 import {handleWallet} from "./commands/wallet";
+./src/assets/welcome.png
 
 dotenv.config();
 /**
