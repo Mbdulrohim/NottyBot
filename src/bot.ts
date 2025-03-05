@@ -9,7 +9,12 @@ import { tradeCommand } from './commands/trade';
 import {handleWallet} from "./commands/wallet";
 
 dotenv.config();
-
+/**
+ * start command with a link
+ * start with contract link
+ * START WITH A REF AND CONTRACT
+ * when message is sent, different states, is it can be command(we parse the one we have available), ton smart contract, solana contract address,--we handle all and also 
+ */
 console.log('Initializing Telegram bot...');
 const bot = new Telegraf(process.env.BOT_TOKEN!);
 

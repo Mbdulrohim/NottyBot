@@ -1,10 +1,11 @@
-import { Context, Markup } from 'telegraf';
-import { generateStartImage } from '../services/welcome-image';
-import { escapeMarkdown } from '../utils/escapeMarkdown';
-import { createMainMenuKeyboard } from '../middleware/keyboard';
-import { mockData } from '../utils/mockData';
-import { generateWalletImage } from '../utils';
-import { generatePnLImage } from '../services/pnl-image';
+import { Context, Markup } from "telegraf";
+import { generateStartImage } from "../services/welcome-image";
+import { escapeMarkdown } from "../utils/escapeMarkdown";
+import { createMainMenuKeyboard } from "../middleware/keyboard";
+import { mockData } from "../utils/mockData";
+import { generateWalletImage } from "../utils";
+import { generatePnLImage } from "../services/pnl-image";
+import { generateWelcomeBackImage } from "../services/welcome-back";
 
 export const startCommand = async (ctx: Context) => {
   try {
@@ -12,7 +13,7 @@ export const startCommand = async (ctx: Context) => {
 // start with contract link
     // Get actual user data from session/database, fallback to mock data
     const user =
-      (await getUserFromSession(ctx.from?.id.toString() || '')) ||
+      (await getUserFromSession(ctx.from?.id.toString() || "")) ||
       mockData.user;
 
     // Generate dynamic image with user data
@@ -20,19 +21,21 @@ export const startCommand = async (ctx: Context) => {
     //   username: user.username || 'New User',
     //   walletBalance: user.wallets.length > 0 ? user.wallets[0].balance : '0',
     // });
-    const image = await generatePnLImage({
-      pair: 'ETH/SOL',
-      entry: '56K @0.0032',
-      exit: '58K @0.0035',
-      duration: '02d 04h 30m',
-      percentChange: '+65.4%',
-      refQr: 'https://api.qrserver.com/v1/create-qr-code/?data=6365646358',
-      refNo: '6xR44435',
-      username: '@DOVEYYLTT',
-      userImage: 'https://api.qrserver.com/v1/create-qr-code/?data=6365646358',
-      profit: true,
-    });
-
+          const image = await generatePnLImage(
+            {
+              pair: "ETH/SOL",
+              entry: "56K @0.0032",
+              exit: "58K @0.0035",
+              duration: "02d 04h 30m",
+              percentChange: "+65.4%",
+              refQr: "https://api.qrserver.com/v1/create-qr-code/?data=6365646358",
+              refNo: "6xR44435",
+              username: "@DOVEYYLTT",
+              userImage: "https://api.qrserver.com/v1/create-qr-code/?data=6365646358",
+              profit: true
+            }
+          )
+    
     const imageBuffer = await generateWalletImage({
       username: 'JohnDoe',
       walletAddress: 'EQABC...xyz',
@@ -40,29 +43,31 @@ export const startCommand = async (ctx: Context) => {
       walletCount: 3,
       isDefault: true,
     });
+
+
+
     const welcomeMessage = buildWelcomeMessage(user);
 
     await ctx.replyWithPhoto(
-      { source: image },
+      { source: imageBuffer },
       {
         caption: escapeMarkdown(welcomeMessage),
         parse_mode: 'MarkdownV2',
         ...createMainMenuKeyboard(user),
       }
     );
-
     // Initialize user session properly
     initializeUserSession(ctx);
   } catch (error) {
-    console.error('Start command error:', error);
-    await ctx.reply('🚨 Error initializing bot. Please try again.');
+    console.error("Start command error:", error);
+    await ctx.reply("🚨 Error initializing bot. Please try again.");
   }
 };
 
 // Helper functions
 function buildWelcomeMessage(user: typeof mockData.user): string {
   return `
-🚀 *Welcome to NottyBot*, ${escapeMarkdown(user.username || 'Trader')}!
+🚀 *Welcome to NottyBot*, ${escapeMarkdown(user.username || "Trader")}!
 
 ▫️ *Connected Wallets:* ${user.wallets.length}
 ▫️ *Current Rank:* ${getRank(user)}
@@ -75,11 +80,11 @@ function buildWelcomeMessage(user: typeof mockData.user): string {
 - Secure Transactions
 
 📌 Use the buttons below to navigate:
-  `.replace(/  +/g, '');
+  `.replace(/  +/g, "");
 }
 
 function getRank(user: typeof mockData.user): string {
-  return user.wallets.length > 0 ? 'Bronze 🥉' : 'Newbie 🆕';
+  return user.wallets.length > 0 ? "Bronze 🥉" : "Newbie 🆕";
 }
 
 async function getUserFromSession(userId: string) {
@@ -93,18 +98,18 @@ function initializeUserSession(ctx: any) {
 
 // Enhanced action handlers
 export const registerStartActions = (bot: any) => {
-  bot.action('wallet_action', async (ctx: Context) => {
-    await ctx.reply('Wallet section coming soon!');
+  bot.action("wallet_action", async (ctx: Context) => {
+    await ctx.reply("Wallet section coming soon!");
   });
 
-  bot.action('trade_action', async (ctx: Context) => {
+  bot.action("trade_action", async (ctx: Context) => {
     await ctx.replyWithMarkdownV2(
-      'Enter token address or name:',
+      "Enter token address or name:",
       Markup.forceReply().selective()
     );
   });
 
-  bot.action('help_action', (ctx: Context) =>
-    ctx.reply('Help content...', Markup.removeKeyboard())
+  bot.action("help_action", (ctx: Context) =>
+    ctx.reply("Help content...", Markup.removeKeyboard())
   );
 };

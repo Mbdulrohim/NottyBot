@@ -71,9 +71,10 @@ export const ASSETS = {
   TON_LOGO: path.resolve(__dirname, "./ton-logo.png"),
   //bg
   NOTTYBG: path.resolve(__dirname, "./NottyBG.png"),
+  NOTTTYBG: path.resolve(__dirname, "./NotttyBG.png"),
   NOTTYBGLOSS: path.resolve(__dirname, "./NottyPnLossBG.png"),
   NOTTYBGPROFIT: path.resolve(__dirname, "./NottyProfitnLBG.png"),
-  NOTTYBGPROFIT2:path.resolve(__dirname,"./NottyPnLBG3.png"),
+  NOTTYBGPROFIT2: path.resolve(__dirname, "./NottyPnLBG3.png"),
   //fonts,
   PLAYFAIR_DISPLAY_BOLD: path.resolve(
     __dirname,

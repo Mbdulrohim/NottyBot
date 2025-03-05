@@ -22,6 +22,25 @@
 
     MARK: to draw rectangle
     order of (marginX, marginY, width, height, cornerRadius)
+
+    Manrope:
+  100 Thin
+  200 Extra-Light
+  300 Light
+  400 Regular
+  500 Medium
+  600 Semi-Bold
+  700 Bold
+  800 Extra-Bold
+  900 Black
+
+  Space Grotesk:
+  300 Light
+  400 Regular
+  500 Medium
+  600 Semi-Bold
+  700 Bold
+  800 Extra-Bold
      */
 
 interface PnLData {
@@ -42,7 +61,7 @@ import { ASSETS, ELEMENT_CONFIG } from "../assets/assets";
 
 export const generatePnLImage = async (data: PnLData): Promise<Buffer> => {
   // Load assets
-  const bgImage = await loadImage(ASSETS.NOTTYBG);
+  const bgImage = await loadImage(ASSETS.NOTTTYBG);
 
   // Create canvas matching background image dimensions
   const canvas = createCanvas(663, 332);
@@ -130,8 +149,8 @@ export const generatePnLImage = async (data: PnLData): Promise<Buffer> => {
   ctx.font = "500 10px Manrope"; // Set font size and family
   ctx.fillStyle = "#FFFFFF"; // Set text color to white
   ctx.textBaseline = "top"; // Start drawing from the top
-  ctx.fillText("Entry", 35, 101); // Draw text at (x = -22, y = -20)
-
+  ctx.fillText("Entry", 35, 101); 
+  
   // ENTRY PRICE
   ctx.font = entryFont;
   ctx.textBaseline = "top";
@@ -220,7 +239,7 @@ export const generatePnLImage = async (data: PnLData): Promise<Buffer> => {
   ctx.fillText(data.username, usernameLeft, usernameTop);
   //USERIMAGE (place holder)
   //TODO:  pass in user image
-//ref qr place holder
+  //ref qr place holder
   ctx.fillStyle = "#FFFFFF";
   ctx.roundRect(600, 275, 35, 35, 10);
   ctx.fill();

@@ -12,6 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@metaplex-foundation/js": "^0.20.1",
+    "@solana/web3.js": "^1.98.0",
     "@ton/core": "^0.60.0",
     "@ton/crypto": "^3.3.0",
     "@ton/ton": "^15.2.1",
