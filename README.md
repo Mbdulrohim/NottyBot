@@ -3,7 +3,7 @@
 **Trade. Compete. Play.**  
 *A Telegram bot revolutionizing crypto trading simulations on TON & SOL blockchains*
 
-![NottyBot Sample Assets](./src/assets/LOGO.png)  
+<img src="./src/assets/LOGO.png" alt="NottyBot Sample Assets" width="200">
 ---
 
 ## 🔥 What Makes NottyBot Special?
@@ -72,9 +72,13 @@ Node.js | PostgreSQL | TON SDK | Solana Web3.js | Node Canvas
 
 ## 🖼️ Visual Preview
 
-| Welcome Sequence | 
-|-------------------|
-| ![Welcome](./src/assets/welcome.png) | 
+| Feature         | Preview |
+|----------------|---------|
+| Welcome        | <img src="./src/assets/welcome.png" alt="Welcome" width="200"> |
+| Welcome Back  | <img src="./src/assets/welcomeBack.png" alt="Welcome Back" width="200"> |
+| PNL           | <img src="./src/assets/pnlLoss.png" alt="PNL" width="200"> |
+| Sent SOL      | <img src="./src/assets/SentSol.png" alt="Sent SOL" width="200"> |
+| Received SOL  | <img src="./src/assets/ReceivedSol.png" alt="Received SOL" width="200"> |
 
 ---
 
