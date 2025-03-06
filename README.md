@@ -151,9 +151,9 @@ Node.js | PostgreSQL | TON SDK | Solana Web3.js | Node Canvas
 ## 👥 Built With Passion By
 
 **Hackathon Team [Notty]**  
-- [@Mbdulrohim] - Core Dev
-- Special thanks to [UX_Geek] for stunning visuals 💎
-
+- **[@Mbdulrohim]** – Core Developer  
+- **[@iamadetoye]** – Database Architect  
+- **[@UX_Geek]** – UI/UX Designer  
 ---
 
 ## ⚡ Quick Start
